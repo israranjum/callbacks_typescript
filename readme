@@ -1,0 +1,21 @@
+#here is some basic commands and code for setup project in typescript
+
+npm init -y
+tsc --init
+npm i inquirer
+npm i -D @types/inquirer
+
+
+Make a file of index.ts
+
+
+Then go tscofig file
+-> "target": "ES2022", 
+-> "module": "NodeNext",
+-> "moduleResolution": "NodeNext",
+
+
+
+Go to package.json
+-> "type": "module",
+-> "start": "tsc && node index.js"
