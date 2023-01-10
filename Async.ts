@@ -10,37 +10,58 @@ function register(){
 }
 
 function sendEmail(){
-    setTimeout(()=>{
-        console.log('Email Sent')
-    
-    },1000)
+    return new Promise<boolean>((resolve,reject)=>{
+        setTimeout(()=>{
+            console.log('Email Sent')
+            resolve(true);
+        },1000)
+    })
 }
 
 function login(){
-    setTimeout(()=>{
-        console.log('Login Successfull')       
-    },1000)
+    return new Promise<boolean>((resolve, reject)=>{
+        setTimeout(()=>{
+            console.log('Login Successfull')
+            resolve(true);       
+        },5000)
+    })
+    
 }
 
 function getUserData(){
-    setTimeout(()=>{
-        console.log('Got user Data')
-    },1000)
+    return new Promise<boolean>((resolve, reject)=>{
+        setTimeout(()=>{
+            console.log('Got user Data')
+            resolve(true);
+            // reject(false);
+        },1000)
+    })
+ 
 }
 
 function displayUserData(){
-    setTimeout(()=>{
-        console.log('User Data Displayed')
-    },1000)
+    return new Promise<boolean>((resolve,reject)=>{
+        setTimeout(()=>{
+            console.log('User Data Displayed')
+            resolve(true)
+        },1000)
+    })
 }
 
+async function authenticate() {
+   await register()
+   await sendEmail()
+   await login()
+   await getUserData()
+   await displayUserData()
+}
 
-register().then(()=>{
-    
+authenticate().then(()=>{
+    setTimeout(()=>{
+        console.log("All Done.")
+    },2000)
+}).catch(()=>{
+    console.log("TryAgain")
 })
-    sendEmail()
-            login()
-            getUserData()
-                displayUserData()
 
 console.log('Other Application Work')
